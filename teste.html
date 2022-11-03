@@ -1,0 +1,95 @@
+
+
+</head>
+    
+
+    <main>
+        <div class="card">
+            <h1 id="contador">0</h1>
+            <button onclick="incrementar()">+ 1 😘</button>
+            <button onclick="decrementar()">- 1 🥺</button>
+        </div>
+    </main>
+   
+    <h2>PESSOAS BEIJADAS</h2>
+   
+    <div class="lista"> 
+            <ul class="lista">
+        
+            </ul>
+    </div>
+   
+    <footer>    
+        <div class="container"> 
+            
+            <!-- botao sobre -->
+            
+            <img clas="botao_sobre" src="img/inte.png" type="submit" onclick="handlePopup(true)" style="width: 43px; height: 43px;margin-top: 3px;cursor: pointer;">
+        </a>
+        
+        
+        <div class="popup" id="popup">
+            
+            <h3 class="title"> <p>⭐️ 1° favorite o site ⭐️</p>
+                <br>
+                <p>😘 Adicione quem você beijou 😘</p>
+                <br>
+                <p>🤭 E nunca mais esqueça quem foi 🤭</p>
+                <br>
+                <p>Seu <b><i>CONTADOR</i></b> e sua <b><i>LISTA</i></b> só séra apagada se você <b><i>APAGUAR?</i></b> </h3>
+                    
+                    
+                    <button class="close-popup-button" type="submit" onclick="handlePopup(false)">
+                        🤩 OK 🤩
+                    </button>
+                    
+                </div>
+                
+                <!-- botao zerar -->
+                <img clas="botao_zerar" src="img/lixo.png" type="submit" onclick="handlePopup2(true)" style="width: 50px; height: 50px; cursor: pointer;margin-left: 2px;">
+            </a>
+            
+            
+            <div class="popup2" id="popup2">
+                
+                <h3 class="title"> <p>😱 QUER MESMO APAGUAR? 😱</p>
+                    <br>
+                    <p>NÃO TEM COMO RECUPERAR !</p>
+                    
+                    
+                    <button class="close-popup2-button" type="submit" onclick="handlePopup2(false)">
+                        😮‍💨 NÃO 😮‍💨
+                    </button>
+                    <button class="close-popup2-button" onclick="limpar(),handlePopup2(false)">🥺 SIM 🥺</button>
+                    
+                </div>
+                
+                <a class="insta" href="https://instagram.com/kiss_score?igshid=YmMyMTA2M2Y="target="_blank">
+                    <img src="img/instagram.png"  style="width: 40px; height: 40px;cursor: pointer; margin-top: 2px;">
+                </a>
+                
+                <script>
+                    const popup = document.getElementById('popup');
+                    
+                    function handlePopup(open) {
+                    popup.classList[open ? 'add' : 'remove']('opened');
+                    }
+
+                    const popup2 = document.getElementById('popup2');
+        
+                    function handlePopup2(open) {
+                     popup2.classList[open ? 'add' : 'remove']('opened');
+                    }
+        
+                </script>
+    </footer>
+    
+    
+    
+
+    
+    
+    <script src="script.js"></script>
+
+    </body>
+</html>

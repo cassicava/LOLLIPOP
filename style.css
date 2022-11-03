@@ -19,7 +19,7 @@ header {
 header>p {
     width: 100%; 
     text-align: center;
-    font-size: 70px;
+    font-size: 65px;
     font-weight: bold;
     color:white;
     padding: 5px;
@@ -56,7 +56,8 @@ h3 {
     flex-direction: column;
     justify-content: center;
     background-color:black;
-    list-style-type: none;    
+    list-style-type: none;  
+
 }
 
 li{
@@ -66,6 +67,85 @@ li{
     font-weight: bold;
     color: white;
 }
+
+.imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img{
+    width: 100px;
+    height: 100px; 
+    cursor: pointer;
+    
+}
+
+    /* POP UP APAGAR */
+
+                .popup-button,
+                .popup .close-popup-button {
+                    background-color:transparent;
+                    border: 4px solid #7b68ee;
+                    border-radius: 50px;
+                    text-transform: uppercase;
+                    color: #FFF;
+                    font-size: 15px;
+                    border-radius: 100%;
+                    font-weight: bold;
+                    width: 60px; 
+                    height: 60px;
+                    cursor: pointer;
+                    transition: all .4s;
+                    
+                }
+                
+                .popup-button:hover,
+                .popup .close-popup-button:hover {
+                    opacity: .8;
+                }
+                
+                .popup-button:active,
+                .popup .close-popup-button:active {
+                    transform: scale(.8);
+                }
+                
+                .popup {
+                    position:absolute;
+                    background-color: black;
+                    border: 4px solid #7b68ee;
+                    border-radius: 50px;
+                    text-align: center;
+                    width: 300px;
+                    height:200px;
+                    box-sizing: border-box;
+                    transition: all .4s;
+                    z-index: -1;
+                    transform: scale(.4);
+                    opacity: 0;
+                    padding: 15px;
+                }
+                
+                .popup.opened {
+                    z-index: 999;
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                
+                .popup h4{
+                    text-align: center;
+                    font-size: 15px;
+                    text-align: center;
+                    color: white;
+                    padding: 10px;
+                }
+
+                    .popup p.desc {
+                    color: #FFF;
+                }
+    
+
+    /* POP UP APAGAR */
 
 /* LISTA */
 
@@ -106,3 +186,51 @@ button {
 }
 
 /* RODAPÉ */
+
+@media (max-width:475px) {
+    header {
+        padding: 10px;
+    }
+
+    header>p {
+        font-size: 60px;
+    }
+
+    .subtitle {
+        padding: 10px 20px;
+    }
+
+    main {
+        height: 60vh;
+    }
+}
+
+
+/* celular pqueno */
+@media (max-width:320px) {
+    header {
+        padding:20px;
+    }
+
+    header>p {
+        font-size: 50px;
+    }
+
+    .subtitle {
+        padding: 10px 20px;
+    }
+
+    main {
+        height: 70vh;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    li {
+        font-size: 20px;
+    }
+    .container {
+        gap: 10px;
+    }
+}

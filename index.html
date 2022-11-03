@@ -24,12 +24,37 @@
 
 <main>
     <h2>😘 Contador de Beijo 😘</h2>  
-    <h3>PESSOAS BEIJADAS:</h3>  
+    <h3>Pessoas Beijadas: </h3>  
         <div class="lista"> 
             <ul class="lista">
             </ul>
         </div>
-    
+                <div class="imagem"> 
+                    <img clas="botao_zerar" src="img/lixo.png" type="submit" onclick="handlePopup(true)"> </a>
+
+                    <div class="popup" id="popup">
+                
+                        <h4>
+                            <p>QUER MESMO APAGUAR?</p>
+                            <br></br>
+                            <p>NÃO TEM COMO RECUPERAR !</p>
+                        </h4> 
+
+                            <button class="close-popup-button" type="submit" onclick="handlePopup(false)">NÃO</button>
+                            <button class="close-popup-button" onclick="limpar(),handlePopup(false)">SIM</button>
+                            
+
+                                <script>
+                                    const popup = document.getElementById('popup');
+                                    
+                                    function handlePopup(open) {
+                                    popup.classList[open ? 'add' : 'remove']('opened');
+                                    }
+                                </script>
+
+                    </div>
+
+                </div>
 </main>
 
 

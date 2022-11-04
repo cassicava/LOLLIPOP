@@ -5,7 +5,8 @@
     font-family:Helvetica, Arial,  sans-serif;
 }
 body {
-    background-color:#7b68ee;
+    background: rgb(123,104,238);
+    background: linear-gradient(180deg, rgba(123,104,238,1) 60%, rgba(28,28,30,1) 60%);
     width:auto;
     height: auto;
 }
@@ -195,14 +196,6 @@ button {
     header>p {
         font-size: 60px;
     }
-
-    .subtitle {
-        padding: 10px 20px;
-    }
-
-    main {
-        height: 60vh;
-    }
 }
 
 
@@ -212,25 +205,12 @@ button {
         padding:20px;
     }
 
-    header>p {
-        font-size: 50px;
-    }
-
-    .subtitle {
-        padding: 10px 20px;
-    }
-
-    main {
-        height: 70vh;
-    }
-    
     h2 {
         font-size: 20px;
     }
+
     li {
         font-size: 20px;
     }
-    .container {
-        gap: 10px;
-    }
-}
+    
+   }

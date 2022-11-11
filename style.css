@@ -161,14 +161,13 @@ footer{
     align-items:center;
     justify-content:space-evenly;
     position: fixed;
-    bottom: 5px;
-    left: 5px;
-    right: -5px;
+    bottom: 0;
+    left: 0;
     width: 100%; 
     height: 100px;
     background-color: #1c1c1e;
     border: 4px solid #7b68ee;
-    border-radius: 50px;
+    border-radius: 30px;
 }
 
 h1 {

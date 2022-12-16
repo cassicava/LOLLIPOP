@@ -180,6 +180,11 @@ h1 {
     color: white;
 }
 
+h6{
+    font-size: 15px;
+    color:#D0342C;
+}
+
 button {
     cursor: pointer;
     color: white;

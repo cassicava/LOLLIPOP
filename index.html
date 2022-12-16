@@ -1,0 +1,110 @@
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Um lugarzinho para você anotar quem beijou">
+    <meta name="keywords" content="beijo, contar beijo,contador de beijo, quem eu beijei, como saber quem beijei, como lembra de quem beijei, beijar pessoa">
+
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Kiss Score</title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="img/">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kiss Score">
+    <meta property="og:description" content="contador de beijo.">
+
+
+
+</head>
+<body>
+
+<!-- TITULO -->
+
+    <header>
+        <h4>Kiss Score</h4>
+        <div class="cor">
+            <h3>😘 CONTADOR DE BEIJO 😘</h3>
+            <h2>PESSOAS</h2> 
+        </div>
+    </header>
+
+<!-- TITULO -->
+
+<!-- -------------------------------------- -->
+
+<!-- LISTA -->
+
+<main> 
+        <div class="lista"> 
+            <ul class="lista">
+            </ul>
+        </div>
+                <div class="imagem"> 
+                    <img clas="botao_zerar" src="img/lixo.png" type="submit" onclick="handlePopup(true)"> </a>
+
+                    <div class="popup" id="popup">
+                
+                        <h4>
+                            <p>QUER MESMO APAGAR?</p>
+                            <br>
+                            <p>NÃO TEM COMO RECUPERAR !</p>
+                        </h4> 
+
+                        <div class="ba">
+
+                            <button class="close-popup-button" type="submit" onclick="handlePopup(false)">NÃO</button>
+                            <button style="border: 3px solid #D0342C;" class="close-popup-button" onclick="limpar(),handlePopup(false)"><h6>SIM</h6></button>
+                            
+                        </div>
+                                <script>
+                                    const popup = document.getElementById('popup');
+                                    
+                                    function handlePopup(open) {
+                                    popup.classList[open ? 'add' : 'remove']('opened');
+                                    }
+                                </script>
+
+                    </div>
+                </div>
+               
+                <img src="img/preto.png" style="width: 100%; height: 100px"></a>
+                
+            </main>
+
+
+
+<!-- LISTA -->
+
+<!-- -------------------------------------- -->
+
+<!-- RODAPÉ -->
+    <footer class="conta">
+    
+        <button onclick="decrementar()">- 1</button>
+        <h1 id="contador">0</h1>
+        <button onclick="incrementar()">+ 1</button>
+   
+    </footer>
+
+<!-- RODAPÉ -->
+
+        <script src="script.js"></script>
+
+</body>
+</html>

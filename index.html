@@ -1,110 +1,764 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Um lugarzinho para você anotar quem beijou">
-    <meta name="keywords" content="beijo, contar beijo,contador de beijo, quem eu beijei, como saber quem beijei, como lembra de quem beijei, beijar pessoa">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="midia.css">
     
-    <title>Kiss Score</title>
-
-    <link rel="apple-touch-icon" sizes="57x57" href="img/">
-    <link rel="apple-touch-icon" sizes="60x60" href="img/">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/">
-    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="img/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Kiss Score">
-    <meta property="og:description" content="contador de beijo.">
 
 
+    <link rel="apple-touch-icon" sizes="57x57" href="icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icon/android-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icon/android-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icon/android-icon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+
+
+
+
+    <title>Cardápio Mika</title>
 
 </head>
+
 <body>
-
-<!-- TITULO -->
-
-    <header>
-        <h4>Kiss Score</h4>
-        <div class="cor">
-            <h3>😘 CONTADOR DE BEIJO 😘</h3>
-            <h2>PESSOAS</h2> 
-        </div>
-    </header>
-
-<!-- TITULO -->
-
-<!-- -------------------------------------- -->
-
-<!-- LISTA -->
-
-<main> 
-        <div class="lista"> 
-            <ul class="lista">
-            </ul>
-        </div>
-                <div class="imagem"> 
-                    <img clas="botao_zerar" src="img/lixo.png" type="submit" onclick="handlePopup(true)"> </a>
-
-                    <div class="popup" id="popup">
-                
-                        <h4>
-                            <p>QUER MESMO APAGAR?</p>
-                            <br>
-                            <p>NÃO TEM COMO RECUPERAR !</p>
-                        </h4> 
-
-                        <div class="ba">
-
-                            <button class="close-popup-button" type="submit" onclick="handlePopup(false)">NÃO</button>
-                            <button style="border: 3px solid #D0342C;" class="close-popup-button" onclick="limpar(),handlePopup(false)"><h6>SIM</h6></button>
-                            
-                        </div>
-                                <script>
-                                    const popup = document.getElementById('popup');
-                                    
-                                    function handlePopup(open) {
-                                    popup.classList[open ? 'add' : 'remove']('opened');
-                                    }
-                                </script>
-
-                    </div>
-                </div>
-               
-                <img src="img/preto.png" style="width: 100%; height: 100px"></a>
-                
-            </main>
-
-
-
-<!-- LISTA -->
-
-<!-- -------------------------------------- -->
-
-<!-- RODAPÉ -->
-    <footer class="conta">
     
-        <button onclick="decrementar()">- 1</button>
-        <h1 id="contador">0</h1>
-        <button onclick="incrementar()">+ 1</button>
-   
-    </footer>
+<header>
 
-<!-- RODAPÉ -->
+   <h1>Pizzaria do Mika</h1>
+   <br>
+   <p><img class="pin" src="img/pin.png"> Rua: Conselheiro Antônio Prado 806</p>
 
-        <script src="script.js"></script>
+       <h3><img class="menu" src="img/cardapio.png">CARDÁPIO</h3>
+</header>
+
+<div class="menul">
+
+    <a href="#pt"><img src="img/pt.png"></a>
+    <a href="#pe"><img src="img/pe.png"></a>
+    <a href="#pd"><img src="img/pid.png"></a>
+    <a href="#es"><img src="img/esf.png"></a>
+    <a href="#ed"><img src="img/esfd.png"></a>
+    <a href="#ba"><img src="img/ba.png"></a>
+    <a href="#pa"><img src="img/pa.png"></a>
+
+</div>
+
+
+
+
+<main>
+
+ <div id="pt">
+    <p>&nbsp;</p>
+ </div>
+
+<!-- PIZZA TRADICIONAL -->
+<!-- PIZZA TRADICIONAL -->
+
+    <divi class="tipo">
+        <h2 >PIZZAS TRADICIONAIS</h2>
+        <img class="fotopizza" src="img/ps.png">
+    </div>
+
+     <div class="pizzas">
+        <h4 class="nome">ATUM</h4>
+        <h5 class="pm">Muçarela, atum, cebola, tomate e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 42,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 47,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">ATUM 2</h4>
+        <h5 class="pm">Muçarela, atum, cebola, tomate, azeitonas, creme de leite e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 46,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 51,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">BAIANA</h4>
+        <h5 class="pm">Muçarela, calabresa ralada, pimenta,
+            cebola e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 35,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 40,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">BACON</h4>
+        <h5 class="pm">Muçarela, bacon e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 35,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 40,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">BACON 2</h4>
+        <h5 class="pm">Muçarela, bacon, catupiry e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 40,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 45,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">PEPERONE</h4>
+        <h5 class="pm">Muçarela, peperone, cebola,
+            tomate e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 40,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 45,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">BRÓCOLIS</h4>
+        <h5 class="pm">Muçarela, brócolis, bacon e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 43,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 48,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">CALABRESA</h4>
+        <h5 class="pm">Muçarela, calabresa, cebola e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 35,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 40,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">CALABRESA 2</h4>
+        <h5 class="pm">Muçarela, calabresa, cebola, azeitonas, bacon e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 43,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 48,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">CARIJÓ</h4>
+        <h5 class="pm">Muçarela, frango desfiado, palmito, milho, azeitonas, tomate, creme de leite e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 47,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 52,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">LOMBO</h4>
+        <h5 class="pm">Muçarela, lombo, tomate e cebola.</h5>
+        <h6 class="tamanhogrande">Média: R$ 37,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 42,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">LOMBO 2</h4>
+        <h5 class="pm">Muçarela, lombo, tomate, cebola e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 42,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 47,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">FRANGO C/ CATUPIRY</h4>
+        <h5 class="pm">Muçarela, frango desfiado, tomate, azeitonas e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 43,00 <b>  &nbsp;  &nbsp; ● &nbsp;  &nbsp;  </b> Grande: R$ 48,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">KALABRIA</h4>
+        <h5 class="pm">Muçarela, calabresa ralada, ovos picados, bacon, azeitonas fatiadas, alho frito e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 45,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 50,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">MARGUERITA</h4>
+        <h5 class="pm">Muçarela, azeitonas, tomate e manjericão.</h5>
+        <h6 class="tamanhogrande">Média: R$ 35,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 40,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">MILHO VERDE</h4>
+        <h5 class="pm">Muçarela, azeitonas, milho verde e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 37,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 42,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">MODA DA CASA</h4>
+        <h5 class="pm">Muçarela, brócolis, atum, azeitonas e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 43,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 48,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">PORTUGUESA</h4>
+        <h5 class="pm">Muçarela, presunto, tomate, ovo, bacon, ervilha, milho, palmito, cebola e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 45,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 50,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">MUÇARELA</h4>
+        <h5 class="pm">Muçarela, tomate e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 35,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 40,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">PALMITO</h4>
+        <h5 class="pm">Muçarela, palmito e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 37,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 42,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">PALMITO 2</h4>
+        <h5 class="pm">Muçarela, palmito azeitonas, catupiry e bacon.</h5>
+        <h6 class="tamanhogrande">Média: R$ 43,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 48,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">DORITOS</h4>
+        <h5 class="pm">Muçarela, cheddar e doritos.</h5>
+        <h6 class="tamanhogrande">Média: R$ 37,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 42,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">PRESUNTO</h4>
+        <h5 class="pm">Muçarela, presunto, tomate e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 35,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 40,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">4 QUEIJOS</h4>
+        <h5 class="pm">Muçarela, parmesão, provolone e gorgonzola.</h5>
+        <h6 class="tamanhogrande">Média: R$ 35,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 40,00</h6>
+    </div>
+
+    <div class="pizzas">
+    <h4 class="nome">5 QUEIJOS</h4>
+        <h5 class="pm">Muçarela, parmesão, provolone,
+            gorgonzola e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 38,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 43,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">RÚCULA</h4>
+        <h5 class="pm">Muçarela, rúcula, e tomate seco.</h5>
+        <h6 class="tamanhogrande">Média: R$ 35,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 40,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">CHAMPIGNON</h4>
+        <h5 class="pm">Muçarela, bacon, azeitonas e champignon.</h5>
+        <h6 class="tamanhogrande">Média: R$ 38,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 43,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">SALAME</h4>
+        <h5 class="pm">Muçarela, salame fatiado, tomate e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 43,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 48,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">AMERICANA</h4>
+        <h5 class="pm">Muçarela, palmito, bacon, ovos e cebola.</h5>
+        <h6 class="tamanhogrande">Média: R$ 40,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 45,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">PIZZA PURÊ</h4>
+        <h5 class="pm">Muçarela, purê, bacon e catupiry.</h5>
+        <h6 class="tamanhogrande">Média: R$ 40,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 45,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">OBS:</h4>
+        <h5 class="pm">Os adicionais serão cobrados a parte de acordo com cada acréscimo de produto.</h5>
+    </div>
+
+<!-- PIZZA TRADICIONAL -->
+<!-- PIZZA TRADICIONAL -->
+
+<div id="pe">
+    <p>&nbsp;</p>
+</div>
+    
+<!-- PIZZA ESPECIAL -->
+<!-- PIZZA ESPECIAL -->
+
+    <div class="tipo">
+        <h2 >PIZZAS ESPECIAIS</h2>
+        <img class="fotopizza" src="img/pss.png">
+    </div>
+
+     <div class="pizzas">
+        <h4 >ALHO-PORÓ</h4>
+        <h5 class="pm">Muçarela, alho-poró e cream cheese.</h5>
+        <h6 class="tamanhogrande">Média: R$ 43,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 48,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">CARNE SECA</h4>
+        <h5 class="pm">Muçarela, carne seca, tomate, cebola e azeitonas.</h5>
+        <h6 class="tamanhogrande">Média: R$ 50,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 55,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">COSTELA</h4>
+        <h5 class="pm">Muçarela, costela desfiada e vinagrete.</h5>
+        <h6 class="tamanhogrande">Média: R$ 57,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 62,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">ESTROGONOFE DE CARNE</h4>
+        <h5 class="pm">Muçarela, catupiry, estrogonofe de carne e batata palha.</h5>
+        <h6 class="tamanhogrande">Média: R$ 69,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 74,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">ESTROGONOFE DE FRANGO</h4>
+        <h5 class="pm">Muçarela, catupiry, estrogonofe de frango e batata palha.</h5>
+        <h6 class="tamanhogrande">Média: R$ 57,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 62,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">ALICHE</h4>
+        <h5 class="pm">Muçarela, filé de anchova, azeitonas e tomate.</h5>
+        <h6 class="tamanhogrande">Média: R$ 40,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 45,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">OBS:</h4>
+        <h5 class="pm">Os adicionais serão cobrados a parte de acordo com cada acréscimo de produto.</h5>
+    </div>
+
+<!-- PIZZA ESPECIAL -->
+<!-- PIZZA ESPECIAL -->
+
+<div id="pd">
+    <p>&nbsp;</p>
+</div>
+
+<!-- PIZZA DOCE -->
+<!-- PIZZA DOCE -->
+
+    <div class="tipo">
+        <h2 >PIZZA DOCE</h2>
+        <img class="fotopizza" src="img/pd.png">
+    </div>
+
+<div class="pizzas">
+    <h4 class="nome">CHURROS</h4>
+    <h5 class="pm">Doce de leite e açúcar com canela.</h5>
+    <h6 class="tamanhogrande">Média: R$ 37,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 42,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">BANANA</h4>
+    <h5 class="pm">Muçarela, banana, leite condensado e canela.</h5>
+    <h6 class="tamanhogrande">Média: R$ 35,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 40,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">BRIGADEIRO</h4>
+    <h5 class="pm">Chocolate e granulado.</h5>
+    <h6 class="tamanhogrande">Média: R$ 37,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 40,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">ROMEU E JULIETA</h4>
+    <h5 class="pm">Muçarela e goiabada.</h5>
+    <h6 class="tamanhogrande">Média: R$ 37,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 42,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">SENSAÇÃO</h4>
+    <h5 class="pm">Chocolate branco, chocolate ao leite e morango.</h5>
+    <h6 class="tamanhogrande">Média: R$ 40,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 45,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">SONHO DE VALSA</h4>
+    <h5 class="pm">Chocolate branco e bombom.</h5>
+    <h6 class="tamanhogrande">Média: R$ 37,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 42,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">BANANA ESPECIAL</h4>
+    <h5 class="pm">Muçarela, banana, leite condensado, canela e chocolate.</h5>
+    <h6 class="tamanhogrande">Média: R$ 40,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 45,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">TORTA DE MAÇÃ</h4>
+    <h5 class="pm">creme de sonho, maçã fatiada, gotas de chocolate, gostas de doce de leite e açucar confeiteiro.</h5>
+    <h6 class="tamanhogrande">Média: R$ 40,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 45,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">ABACAXI</h4>
+    <h5 class="pm">Abacaxi e chocolate branco.</h5>
+    <h6 class="tamanhogrande">Média: R$ 37,00 <b>  &nbsp; ● &nbsp;  </b> Grande: R$ 42,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">OBS:</h4>
+    <h5 class="pm">Os adicionais serão cobrados a parte de acordo com cada acréscimo de produto.</h5>
+</div>
+
+
+<!-- PIZZA DOCE -->
+<!-- PIZZA DOCE -->
+
+<div id="es">
+    <p>&nbsp;</p>
+</div>
+
+<!-- ESFIRRA -->
+<!-- ESFIRRA -->
+
+    <div class="tipo">
+        <h2 >ESFIRRAS SALGADA</h2>
+        <img class="fotopizza" src="img/es.png">
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">PURÊ</h4>
+        <h6 class="tamanhogrande">R$ 6,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">ATUM</h4>
+        <h6 class="tamanhogrande">R$ 6,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">CARNE</h4>
+        <h6 class="tamanhogrande">R$ 6,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">LOMBO</h4>
+        <h6 class="tamanhogrande">R$ 5,50</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">MILHO</h4>
+        <h6 class="tamanhogrande">R$ 5,50</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">BACON</h4>
+        <h6 class="tamanhogrande">R$ 6,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">BAIANA</h4>
+        <h6 class="tamanhogrande">R$ 5,50</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">PALMITO.</h4>
+        <h6 class="tamanhogrande">R$ 5,50</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">PALMITO 2</h4>
+        <h6 class="tamanhogrande">R$ 6,50</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">COSTELA</h4>
+        <h6 class="tamanhogrande">R$ 7,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">DORITOS.</h4>
+        <h6 class="tamanhogrande">R$ 6,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">PEPERONE</h4>
+        <h6 class="tamanhogrande">R$ 5,50</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">BRÓCOLIS</h4>
+        <h6 class="tamanhogrande">R$ 6,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">ALHO PORÓ</h4>
+        <h6 class="tamanhogrande">R$ 7,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">4 QUEIJOS</h4>
+        <h6 class="tamanhogrande">R$ 5,50</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">5 QUEIJOS</h4>
+        <h6 class="tamanhogrande">R$ 6,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">CARNE SECA</h4>
+        <h6 class="tamanhogrande">R$ 7,00</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">CALABRESA</h4>
+        <h6 class="tamanhogrande">R$ 5,50</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">CALABRESA 2</h4>
+        <h6 class="tamanhogrande">R$ 6,50</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">CARNE E QUEIJO</h4>
+        <h6 class="tamanhogrande">R$ 6,50</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">PRESUNTO E QUEIJO</h4>
+        <h6 class="tamanhogrande">R$ 5,50</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">FRANGO C/ CATUPIRY</h4>
+        <h6 class="tamanhogrande">R$ 5,50</h6>
+    </div>
+
+    <div class="pizzas">
+        <h4 class="nome">ESTROGONOFE DE CARNE</h4>
+        <h6 class="tamanhogrande">R$ 7,00</h6>
+    </div>
+    
+    <div class="pizzas">
+        <h4 class="nome">ESTROGONOFE DE FRANGO</h4>
+        <h7 class="tamanhogrande">R$ 7,00</h7>
+    </div>
+
+<!-- ESFIRRA -->
+<!-- ESFIRRA -->
+
+<div id="ed">
+    <p>&nbsp;</p>
+</div>
+
+<!-- ESFIRRA DOCE -->
+<!-- ESFIRRA DOCE-->
+
+    <div class="tipo">
+        <h2 >ESFIRRAS DOCE</h2>
+        <img class="fotopizza" src="img/esd.png">
+    </div>
+
+<div class="pizzas">
+    <h4 class="nome">BANANA</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">ABACAXI</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">CHOCOLATE</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">SENSAÇÃO.</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">CASADINHO</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">CHURROS</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">PACOQUINHA</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">ABACAXI NEVADA</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">TORTA DE MAÇÀ</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">SONHO DE VALSA</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">BANANA ESPECIAL</h4>
+    <h6 class="tamanhogrande">R$ 6,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">ROMEU E JULIETA</h4>
+    <h7 class="tamanhogrande">R$ 6,00</h7>
+</div>
+
+<!-- ESFIRRA DOCE -->
+<!-- ESFIRRA DOCE -->
+
+<div id="ba">
+    <p>&nbsp;</p>
+</div>
+
+<!-- BATATA -->
+<!-- BATATA -->
+
+    <div class="tipo">
+        <h2 >BATATA RECHEADA</h2>
+        <img class="fotopizza" src="img/bat.png">
+    </div>
+
+<div class="pizzas">
+    <h4 class="nome">ATUM</h4>
+    <h5 class="pm">Muçarela, atum, batata palha e catupiry.</h5>
+    <h6 class="tamanhogrande">R$ 23,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">BACON</h4>
+    <h5 class="pm">Muçarela, bacon, batata palha e catupiry.</h5>
+    <h6 class="tamanhogrande">R$ 23,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">BRÓCOLIS</h4>
+    <h5 class="pm">Muçarela, brócolis, bacon, batata palha e catupiry.</h5>
+    <h6 class="tamanhogrande">R$ 23,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">CARNE SECA</h4>
+    <h5 class="pm">Muçarela, carne seca, batata palha e catupiry.</h5>
+    <h6 class="tamanhogrande">R$ 25,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">PALMITO</h4>
+    <h5 class="pm">Muçarela, palmito, batata palha e catupiry.</h5>
+    <h6 class="tamanhogrande">R$ 23,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">ESTROGONOFE DE CARNE</h4>
+    <h5 class="pm">Muçarela, estrogonofe de carne, batata palha e catupiry.</h5>
+    <h6 class="tamanhogrande">R$ 25,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">ESTROGONOFE DE FRANGO</h4>
+    <h5 class="pm">Muçarela, estrogonofe de frango, batata palha e catupiry.</h5>
+    <h6 class="tamanhogrande">R$ 25,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">4 QUEIJOS</h4>
+    <h5 class="pm">Muçarela, parmesão, provolone, catupiry e batata palha.</h5>
+    <h6 class="tamanhogrande">R$ 23,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">CALABRESA</h4>
+    <h5 class="pm">Muçarela, calabresa, batata palha e catupiry.</h5>
+    <h6 class="tamanhogrande">R$ 23,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">OBS:</h4>
+    <h5 class="pm">O valor de cada ingrediente adicional é de 2,00.</h5>
+</div>
+
+<!-- BATATA -->
+<!-- BATATA -->
+
+<div id="pa">
+    <p>&nbsp;</p>
+</div>
+
+<!-- PANQUECA -->
+<!-- PANQUECA -->
+
+    <div class="tipo">
+        <h2 >PANQUECA</h2>
+        <img class="fotopizza" src="img/pan.png">
+    </div>
+
+<div class="pizzas">
+    <h4 class="nome">4 QUEIJOS.</h4>
+    <h6 class="tamanhogrande">R$ 10,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">5 QUEIJOS</h4>
+    <h6 class="tamanhogrande">R$ 12,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">CARNE SECA</h4>
+    <h6 class="tamanhogrande">R$ 16,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">PRESUNTO E QUEIJO</h4>
+    <h6 class="tamanhogrande">R$ 11,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">CARNE COM QUEIJO</h4>
+    <h6 class="tamanhogrande">R$ 13,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">ABACAFRANGO COM QUEIJOXI</h4>
+    <h6 class="tamanhogrande">R$ 12,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">CARNE CATUPIRY</h4>
+    <h6 class="tamanhogrande">R$ 15,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">FRANGO CATUPIRY.</h4>
+    <h6 class="tamanhogrande">R$ 14,00</h6>
+</div>
+
+<div class="pizzas">
+    <h4 class="nome">OBS:</h4>
+    <h5 class="pm">O valor de cada ingrediente adicional é de 2,00.</h5>
+</div>
+
+<!-- PANQUECA -->
+<!-- PANQUECA -->
+
+</main>
+
+<footer>
+    
+    <br>
+    <p style="font-size: 26px;">Pizzaria do Mika</p>
+    <p>
+    <br>
+    Horários:
+    <br>
+    Terça à Domingo: das 18:00h às 23:00h
+    </p>
+    
+</footer>
+
+<div class="bot"> 
+
+    <a href="https://api.whatsapp.com/send?phone=5516993360858&fbclid=PAAaatJ6RIrn3LFvjTRlhQcPCIq9tVUN17BXbX0bOiKq6i6AzfyPZwTxywE1Y" target="_blank"><button> Faça um Pedido</a></button> 
+    
+    
+</div>
 
 </body>
+
 </html>

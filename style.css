@@ -124,7 +124,7 @@ img {
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .popup-button,
@@ -169,10 +169,10 @@ img {
 footer {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     width: 60%;
-    height: 65px;
+    height: 75px;
 
     position: fixed;
     bottom: 5px;
@@ -187,7 +187,7 @@ footer {
 footer>button {
     cursor: pointer;
     color: #fafafa;
-
+    margin: 0 7.5px;
     background-color: #1b1c1e;
     border: 2px solid rgba(181, 123, 238, 1);
     border-radius: 100%;
@@ -197,6 +197,6 @@ footer>button {
     font-weight: bold;
     text-align: center;
 
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }

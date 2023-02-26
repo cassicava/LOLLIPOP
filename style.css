@@ -34,7 +34,7 @@ header {
 h1 {
     color: white;
     font-weight: 700;
-    font-size: 2em;
+    font-size: 2.8em;
     text-align: center;
     letter-spacing: 1px;
 }
@@ -42,7 +42,7 @@ h1 {
 p {
     color: white;
     font-weight: 400;
-    font-size: 1.4em;
+    font-size: 2.2em;
     text-align: center;
 }
 
@@ -56,9 +56,9 @@ p {
 h2 {
     color: white;
     font-weight: 400;
-    font-size: 1.4em;
+    font-size: 2em;
     text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
 /* M A I N */
@@ -69,7 +69,7 @@ li {
 
     color: white;
     text-align: center;
-    font-size: 1.4em;
+    font-size: 1.8em;
     list-style-type: none;
 }
 

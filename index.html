@@ -1,15 +1,16 @@
-    <!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <meta name="description" content="Um lugarzinho para você anotar quem beijou">
+    
     <meta name="keywords" content="beijo, contar beijo,contador de beijo, quem eu beijei, como saber quem beijei, como lembra de quem beijei, beijar pessoa">
 
-    <link rel="stylesheet" href="style.css">
-    
-    <title>Kiss Score</title>
 
     <link rel="apple-touch-icon" sizes="57x57" href="img/">
     <link rel="apple-touch-icon" sizes="60x60" href="img/">
@@ -29,82 +30,88 @@
     <meta property="og:title" content="Kiss Score">
     <meta property="og:description" content="contador de beijo.">
 
+    
+    <link rel="stylesheet" href="style.css">
+
+
+    <title>Kiss Score</title>
 
 
 </head>
+
+
 <body>
 
-<!-- TITULO -->
-
     <header>
-        <h4>Kiss Score</h4>
-        <div class="cor">
-            <h3>😘 CONTADOR DE BEIJO 😘</h3>
-            <h2>PESSOAS</h2> 
+        <div class="titulo">
+            <h1>Kiss Score</h1>
+        </div>
+        <div class="sub_titulo">
+            <p>Contador de Beijo</p>
         </div>
     </header>
 
-<!-- TITULO -->
+    <!-- M A I N -->
 
-<!-- -------------------------------------- -->
+    <main>
+        <div class="pessoa">
+            <h2>Pessoas: </h2>
+        </div>
 
-<!-- LISTA -->
-
-<main> 
-        <div class="lista"> 
+        <div class="lista">
             <ul class="lista">
             </ul>
         </div>
-                <div class="imagem"> 
-                    <img clas="botao_zerar" src="img/lixo.png" type="submit" onclick="handlePopup(true)"> </a>
+    </main>
 
-                    <div class="popup" id="popup">
-                
-                        <h4>
-                            <p>QUER MESMO APAGAR?</p>
-                            <br>
-                            <p>NÃO TEM COMO RECUPERAR !</p>
-                        </h4> 
+    <!-- I M G   P O P - U P -->
 
-                        <div class="ba">
+    <div class="imagem">
+        <img src="./img/lixo.png" alt="imagem de lixeira" type="submit" onclick="handlePopup(true)">
 
-                            <button class="close-popup-button" type="submit" onclick="handlePopup(false)">NÃO</button>
-                            <button style="border: 3px solid #D0342C;" class="close-popup-button" onclick="limpar(),handlePopup(false)"><h6>SIM</h6></button>
-                            
-                        </div>
-                                <script>
-                                    const popup = document.getElementById('popup');
-                                    
-                                    function handlePopup(open) {
-                                    popup.classList[open ? 'add' : 'remove']('opened');
-                                    }
-                                </script>
+        <div class="popup" id="popup">
 
-                    </div>
-                </div>
-               
-                <img src="img/preto.png" style="width: 100%; height: 100px"></a>
-                
-            </main>
+            <div class="escrito_botao">
+                <p>QUER MESMO APAGAR?</p>
+                <p>NÃO TEM COMO RECUPERAR !</p>
+            </div>
 
+            <div class="botoes">
 
+                <button class="close-popup-button" type="submit" onclick="handlePopup(false)">
+                    NÃO
+                </button>
 
-<!-- LISTA -->
+                <button style="border: 2px solid #D0342C;" class="close-popup-button"
+                    onclick="limpar(),handlePopup(false)">
+                    SIM
+                </button>
 
-<!-- -------------------------------------- -->
+            </div>
+            <script>
+                const popup = document.getElementById('popup');
 
-<!-- RODAPÉ -->
+                function handlePopup(open) {
+                    popup.classList[open ? 'add' : 'remove']('opened');
+                }
+            </script>
+
+        </div>
+    </div>
+
+    <!-- R O D A P E -->
+
     <footer class="conta">
-    
+
         <button onclick="decrementar()">- 1</button>
         <h1 id="contador">0</h1>
         <button onclick="incrementar()">+ 1</button>
-   
+
     </footer>
 
-<!-- RODAPÉ -->
-
-        <script src="script.js"></script>
+    
+    <script src="script.js"></script>
 
 </body>
+
 </html>

@@ -1,210 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:Helvetica, Arial,  sans-serif;
-}
-body {
-    background-color:black;
-    width:auto;
-    height: auto;
-    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: Helvetica, Arial, sans-serif;
+    /* border: 1px solid red; */
 }
 
-/* TITULO */
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #1b1c1e;
+}
+
+/* H E A D E R */
 
 header {
-    background: #7b68ee;
+    height: auto;
+    padding: 10px;
+
+    background: rgb(57, 45, 105);
+    background: linear-gradient(135deg, rgba(57, 45, 105, 1) 0%, rgba(181, 123, 238, 1) 100%);
 }
 
-h4{
-    width: 100%; 
-    color:white;
-    text-align: center;
-    font-size: 48px;
-    font-weight: bold;
-    padding-top: 15px;
-}
-
-h3{
-    width: 100%;
-    color: white;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    padding-bottom: 10px;
-}
-
-h2 {
-    width: 100%;
-    color: white;
-    text-align: center;
-    font-size: 26px;
-    padding-bottom: 10px;
-}
-
-.cor{
-    background: #7b68ee;
-    background: linear-gradient(180deg, rgba(123,104,238,1) 0%, black 100%);
-}
-
-/* TITULO */
-
-/* -------------------------------------- */
-
-/* LISTA */
-
-
-
-.lista {
-    display: flex;
-    align-items:center;
-    flex-direction: column;
-    justify-content: center;
-    background-color:black;
-    list-style-type: none;  
-
-}
-
-li{
-    text-align: center;
-    font-size: 32px;
+.titulo,
+.sub_titulo {
     padding: 5px;
-    font-weight: bold;
-    color: white;
-}
-
-.imagem{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color:black;
-}
-
-img{
-    width: 80px;
-    height: 80px; 
-    cursor: pointer; 
-}
-    
-    /* POP UP APAGAR */
-
-                .popup-button,
-                .popup .close-popup-button {
-                    background-color:transparent;
-                    border: 3px solid #7b68ee;
-                    border-radius: 50px;
-                    text-transform: uppercase;
-                    color: #FFF;
-                    font-size: 15px;
-                    border-radius: 100%;
-                    font-weight: bold;
-                    width: 60px; 
-                    height: 60px;
-                    cursor: pointer;
-                    transition: all .4s;
-                    
-                }
-                
-                .popup-button:hover,
-                .popup .close-popup-button:hover {
-                    opacity: .8;
-                }
-                
-                .popup-button:active,
-                .popup .close-popup-button:active {
-                    transform: scale(.8);
-                }
-                
-                .popup {
-                    position:absolute;
-                    background-color: black;
-                    border: 3px solid #7b68ee;
-                    border-radius: 50px;
-                    text-align: center;
-                    width: 300px;
-                    height:200px;
-                    box-sizing: border-box;
-                    transition: all .4s;
-                    z-index: -1;
-                    transform: scale(.4);
-                    opacity: 0;
-                    padding: 15px;
-                }
-                
-                .popup.opened {
-                    z-index: 999;
-                    transform: scale(1);
-                    opacity: 1;
-                }
-                
-                .popup h4{
-                    text-align: center;
-                    font-size: 15px;
-                    text-align: center;
-                    color: white;
-                    padding: 10px;
-                }
-
-                    .popup p.desc {
-                    color: #FFF;
-                }
-    
-
-    /* POP UP APAGAR */
-
-/* LISTA */
-
-/* -------------------------------------- */
-
-/* RODAPÉ */
-
-footer{
-    display: flex;
-    align-items:center;
-    justify-content:space-around;
-    position: fixed;
-    bottom: 10px;
-    left: 50px;
-    right: 50px;
-    height: 90px;
-    background-color: black;
-    border: 2px solid #7b68ee;
-    border-radius: 50px;
-    box-shadow:  0px 0px 25px #7c68eebc;
 }
 
 h1 {
-    font-size: 48px;
-    text-align: center;
     color: white;
+    font-weight: 700;
+    font-size: 2em;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
-h6{
-    font-size: 15px;
-    color:#D0342C;
+p {
+    color: white;
+    font-weight: 400;
+    font-size: 1.4em;
+    text-align: center;
 }
 
-button {
+/* M A I N */
+/* P E S S O A S */
+
+.pessoa {
+    padding: 10px;
+}
+
+h2 {
+    color: white;
+    font-weight: 400;
+    font-size: 1.4em;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+/* M A I N */
+/* L I S T A */
+
+li {
+    padding: 5px;
+
+    color: white;
+    text-align: center;
+    font-size: 1.4em;
+    list-style-type: none;
+}
+
+/* I M G */
+
+.imagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+/* I M G */
+/* P O P - U P */
+
+.escrito_botao {
+    padding: 2.5px;
+}
+
+.escrito_botao>p {
+    padding: 2.5px;
+    font-size: 1em;
+
+}
+
+.popup {
+    position: absolute;
+    background-color: #1b1c1e;
+
+    border: 2px solid rgba(181, 123, 238, 1);
+    border-radius: 50px;
+
+    width: auto;
+    height: auto;
+
+    transition: all .4s;
+    z-index: -1;
+    transform: scale(.4);
+    opacity: 0;
+    padding: 15px;
+}
+
+.botoes {
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.popup-button,
+.popup .close-popup-button {
+    background-color: transparent;
+
+    border: 2px solid rgba(181, 123, 238, 1);
+    border-radius: 50px;
+
+    text-transform: uppercase;
+    color: #FFF;
+    font-size: 1em;
+    border-radius: 100%;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all .4s;
+
+}
+
+.popup-button:hover,
+.popup .close-popup-button:hover {
+    opacity: .8;
+}
+
+.popup-button:active,
+.popup .close-popup-button:active {
+    transform: scale(.8);
+}
+
+
+
+.popup.opened {
+    z-index: 999;
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* R O D A P E */
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 70%;
+    height: 90px;
+
+    position: fixed;
+    bottom: 5px;
+    left: 15%;
+    right: 15%;
+
+    background-color: #1b1c1e;
+    border: 2px solid rgba(181, 123, 238, 1);
+    border-radius: 50px;
+}
+
+footer>button {
     cursor: pointer;
     color: white;
-    border: 2px solid #7b68ee;
-    font-size:x-large;
-    text-align:center;
-    color: white;
+
+    background-color: #1b1c1e;
+    border: 2px solid rgba(181, 123, 238, 1);
     border-radius: 100%;
-    background-color:black;
+
+    color: white;
+    font-size: x-large;
     font-weight: bold;
-    width: 60px; 
-    height: 60px;
+    text-align: center;
+
+    width: 70px;
+    height: 70px;
 }
-
-.ba{
-    display: flex;
-    align-items:center;
-    justify-content:space-around;
-    margin-top: 5px;
-}
-
-/* RODAPÉ */
-

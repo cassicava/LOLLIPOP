@@ -21,7 +21,7 @@ renderizar()
 
 function incrementar(){
     contador.innerHTML = parseInt(contador.innerText) + 1;
-    var nome = prompt("🤭 Quem você beijou 🤭");
+    var nome = prompt("Quem você beijou?");
     pessoa.push(nome)
     addLista(nome);
     salvarContato()

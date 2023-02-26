@@ -32,7 +32,7 @@ header {
 }
 
 h1 {
-    color: fafafa;
+    color: #fafafa;
     font-weight: 700;
     font-size: 2.8em;
     text-align: center;
@@ -54,7 +54,7 @@ p {
 }
 
 h2 {
-    color: fafafa;
+    color: #fafafa;
     font-weight: 400;
     font-size: 1.8em;
     text-align: center;
@@ -67,7 +67,7 @@ h2 {
 li {
     padding: 5px;
 
-    color: fafafa;
+    color: #fafafa;
     text-align: center;
     font-weight: 400;
     font-size: 1.8em;
@@ -186,13 +186,13 @@ footer {
 
 footer>button {
     cursor: pointer;
-    color: fafafa;
+    color: #fafafa;
 
     background-color: #1b1c1e;
     border: 2px solid rgba(181, 123, 238, 1);
     border-radius: 100%;
 
-    color: fafafa;
+    color: #fafafa;
     font-size: large;
     font-weight: bold;
     text-align: center;

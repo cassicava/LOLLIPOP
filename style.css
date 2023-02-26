@@ -42,7 +42,7 @@ h1 {
 p {
     color: white;
     font-weight: 400;
-    font-size: 2.2em;
+    font-size: 2em;
     text-align: center;
 }
 
@@ -58,7 +58,7 @@ h2 {
     font-weight: 400;
     font-size: 2em;
     text-align: center;
-    letter-spacing: 3px;
+    letter-spacing: 5px;
 }
 
 /* M A I N */
@@ -69,7 +69,8 @@ li {
 
     color: white;
     text-align: center;
-    font-size: 1.8em;
+    font-weight: 400;
+    font-size: 2em;
     list-style-type: none;
 }
 
@@ -170,13 +171,13 @@ footer {
     align-items: center;
     justify-content: space-evenly;
 
-    width: 70%;
+    width: 60%;
     height: 65px;
 
     position: fixed;
     bottom: 5px;
-    left: 15%;
-    right: 15%;
+    left: 20%;
+    right: 20%;
 
     background-color: #1b1c1e;
     border: 2px solid rgba(181, 123, 238, 1);

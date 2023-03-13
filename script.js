@@ -34,21 +34,21 @@ function addLista(nome){
 
 function decrementar(){
 
-
+    if(contador.innerText >=1){
     
-    contador.innerHTML = parseInt(contador.innerText) - 1;
-    salvarContato()
-    pessoa.pop()
-    localStorage.setItem('pessoa', JSON.stringify(pessoa))
-    renderizar
-    
-    if(pessoa.length >= 0){
-        contextList.innerHTML = ''
-        pessoa.forEach(element => {
-            contextList.innerHTML += `<li>${element}<li/>`
-        });
+        contador.innerHTML = parseInt(contador.innerText) - 1;
+        salvarContato()
+        pessoa.pop()
+        localStorage.setItem('pessoa', JSON.stringify(pessoa))
+        renderizar
+        
+        if(pessoa.length >= 0){
+            contextList.innerHTML = ''
+            pessoa.forEach(element => {
+                contextList.innerHTML += `<li>${element}<li/>`
+            });
+        }
     }
-
 }
 
 function limpar(){

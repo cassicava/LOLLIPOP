@@ -8,8 +8,13 @@
     -moz-osx-font-smoothing: grayscale;
     font-family: Helvetica, Arial, sans-serif;
 
-    scroll-behavior: smooth;
     /* border: 1px solid red; */
+}
+
+html {
+    scroll-behavior: smooth;
+
+    height: -webkit-fill-available;
 }
 
 body {

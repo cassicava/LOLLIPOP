@@ -1,132 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <meta name="description" content="Um lugarzinho para você anotar quem beijou">
 
-    <meta name="keywords"
-        content="beijo, contar beijo,contador de beijo, quem eu beijei, como saber quem beijei, como lembra de quem beijei, beijar pessoa">
-
-
-    <link rel="apple-touch-icon" sizes="57x57" href="img/">
-    <link rel="apple-touch-icon" sizes="60x60" href="img/">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/">
-    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="img/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Kiss Score">
-    <meta property="og:description" content="contador de beijo.">
-
-
     <link rel="stylesheet" href="style.css">
-
-
-    <title>LOLLIPOP</title>
-
-
+    <title>Lollipop - Contador de Beijos</title>
 </head>
-
 
 <body>
 
-
-    <!-- H E A D E R -->
-
-
     <header>
+        <div class="header-actions">
+            <button id="botaoStats" class="header-button" title="Estatísticas">📊</button>
+        </div>
         <div class="titulo">
             <h1><span>L</span>ollipop</h1>
         </div>
-        <div class="sub_titulo">
-            <p>Contador de Beijo</p>
-        </div>
+        <div class="header-actions">
+            </div>
     </header>
-
-
-    <!-- M A I N -->
-
 
     <main>
         <div class="pessoa">
-            <h2>PESSOAS </h2>
+            <h2>QUEM VOCÊ BEIJOU</h2>
         </div>
-
-        <div class="lista">
-            <ul class="lista">
-            </ul>
+        <div id="containerLista">
+            <div id="estadoVazio" class="estado-vazio">
+                <p>Sua lista está vazia!</p>
+                <span>Adicione o primeiro beijo no botão '+' abaixo.</span>
+            </div>
+            <ul id="listaPessoas" class="lista">
+                </ul>
         </div>
     </main>
 
-
-    <!-- I M G  &  P O P - U P -->
-
-
     <div class="imagem">
-        <img src="./img/lixo.png" alt="imagem de lixeira" type="submit" onclick="handlePopup(true)">
+        <img id="botaoLimparTudo" src="./img/lixo.png" alt="Limpar toda a lista">
+    </div>
+    <div id="overlay"></div>
 
-        <div class="popup" id="popup">
-
-            <div class="escrito_botao">
-                <p>QUER MESMO APAGAR?</p>
-                <p>NÃO TEM COMO RECUPERAR !</p>
+    <div class="modal-container" id="modalLimparTudo">
+        <div class="modal">
+            <p class="modal-titulo">Quer mesmo apagar tudo?</p>
+            <p class="modal-subtitulo">Essa ação não pode ser desfeita!</p>
+            <div class="botoes-modal">
+                <button id="botaoCancelarLimpeza" class="modal-button cancel">NÃO</button>
+                <button id="botaoConfirmarLimpeza" class="modal-button danger">SIM, APAGAR TUDO</button>
             </div>
+        </div>
+    </div>
 
-            <div class="botoes">
-
-                <button class="close-popup-button" type="submit" onclick="handlePopup(false)">
-                    NÃO
-                </button>
-
-                <button style="border: 3px solid #D0342C;" class="close-popup-button"
-                    onclick="limpar(),handlePopup(false)">
-                    SIM
-                </button>
-
+    <div class="modal-container" id="modalAdicionar">
+        <div class="modal">
+            <p class="modal-titulo">Quem você beijou?</p>
+            <input type="text" id="inputNome" placeholder="Digite o nome aqui..." maxlength="30">
+            <p class="modal-pergunta">Como foi?</p>
+            <div id="containerEmojis" class="emojis-rating">
+                <span class="emoji" data-rating="ruim" title="Ruim">🤮</span>
+                <span class="emoji" data-rating="bom" title="Tanto faz">🥱</span>
+                <span class="emoji" data-rating="denovo" title="Quero de novo!">😍</span>
             </div>
+            <div class="botoes-modal">
+                <button id="botaoCancelarAdicao" class="modal-button cancel">CANCELAR</button>
+                <button id="botaoConfirmarAdicao" class="modal-button success">ADICIONAR</button>
+            </div>
+        </div>
+    </div>
 
-            <script>
-                const popup = document.getElementById('popup');
-
-                function handlePopup(open) {
-                    popup.classList[open ? 'add' : 'remove']('opened');
-                }
-            </script>
-
+    <div class="modal-container" id="modalStats">
+        <div class="modal">
+            <button id="botaoFecharStats" class="modal-fechar-button">&times;</button>
+            <p class="modal-titulo">Estatísticas</p>
+            <div class="stats-content">
+                <p>Total de Pessoas: <strong id="statsTotal">0</strong></p>
+                <div class="stats-rating">
+                    <span title="Ruim">🤮: <strong id="statsRuim">0</strong></span>
+                    <span title="Tanto faz">🥱: <strong id="statsBom">0</strong></span>
+                    <span title="Quero de novo!">😍: <strong id="statsDenovo">0</strong></span>
+                </div>
+            </div>
         </div>
     </div>
 
 
-    <!-- F O O T E R -->
-
-
-    <footer class="conta">
-
-        <button onclick="decrementar()">- 1</button>
+    <footer>
+        <button id="botaoDecrementar" title="Remover o último adicionado">-</button>
         <h1 id="contador">0</h1>
-        <button onclick="incrementar()">+ 1</button>
-
+        <button id="botaoIncrementar" title="Adicionar nova pessoa">+</button>
     </footer>
 
-
-    <!-- S C R I P T -->
-
-
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
-
 
 </body>
 

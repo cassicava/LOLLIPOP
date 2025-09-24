@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- SELEÇÃO DE ELEMENTOS DO DOM ---
+    const header = document.getElementById("header");
     const contadorDisplay = document.getElementById("contador");
     const listaPessoasDisplay = document.getElementById("listaPessoas");
     const estadoVazioDisplay = document.getElementById("estadoVazio");
@@ -10,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const botaoIncrementar = document.getElementById("botaoIncrementar");
     const botaoDecrementar = document.getElementById("botaoDecrementar");
     const botaoLimparTudo = document.getElementById("botaoLimparTudo");
-    const botaoStats = document.getElementById("botaoStats");
 
     // Modal Limpar Tudo
     const modalLimparTudo = document.getElementById("modalLimparTudo");
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Modal Adicionar
     const modalAdicionar = document.getElementById("modalAdicionar");
+    const modalAdicionarCard = modalAdicionar.querySelector(".modal");
     const botaoConfirmarAdicao = document.getElementById("botaoConfirmarAdicao");
     const botaoCancelarAdicao = document.getElementById("botaoCancelarAdicao");
     const inputNome = document.getElementById("inputNome");
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statsRuim = document.getElementById("statsRuim");
     const statsBom = document.getElementById("statsBom");
     const statsDenovo = document.getElementById("statsDenovo");
+    const statsFogo = document.getElementById("statsFogo");
 
     // --- ESTADO DA APLICAÇÃO ---
     let pessoas = JSON.parse(localStorage.getItem('pessoas')) || [];
@@ -61,10 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const ratingEmojiMap = {
                     ruim: '🤮',
                     bom: '😊',
-                    denovo: '😍'
+                    denovo: '😍',
+                    fogo: '🔥'
                 };
 
-                // Novo layout: Emoji - Nome - Data - Lixeira
                 item.innerHTML = `
                     <span class="lista-item-emoji">${ratingEmojiMap[pessoa.rating] || ''}</span>
                     <p class="lista-item-nome">${pessoa.name}</p>
@@ -94,11 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         if (rating === 'ruim') {
-            opcoes.colors = ['#5C4033', '#6A5141', '#856D4D', '#3D2B1F']; // Tons de marrom/verde escuro
+            opcoes.colors = ['#5C4033', '#6A5141', '#856D4D', '#3D2B1F'];
         } else if (rating === 'denovo') {
-            opcoes.colors = ['#ff69b4', '#ff1493', '#c71585', '#db7093']; // Tons de rosa/vermelho
+            opcoes.colors = ['#ff69b4', '#ff1493', '#c71585', '#db7093'];
+        } else if (rating === 'fogo') {
+            opcoes.colors = ['#ff4d00', '#ff7d00', '#ff0000', '#ffd700'];
+            opcoes.particleCount = 150;
+            opcoes.spread = 100;
+        } else if (rating === 'bom') {
+            opcoes.colors = ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42'];
         }
-        // Se for 'bom', usa as cores padrão do confete
 
         confetti(opcoes);
     };
@@ -108,15 +115,22 @@ document.addEventListener('DOMContentLoaded', () => {
         inputNome.value = '';
         ratingSelecionado = null;
         document.querySelectorAll('.emoji').forEach(e => e.classList.remove('selected'));
+        modalAdicionarCard.classList.remove('modal-fire-effect');
         toggleModal(modalAdicionar, true);
         inputNome.focus();
     });
     
     containerEmojis.addEventListener('click', (e) => {
         if (e.target.classList.contains('emoji')) {
+            modalAdicionarCard.classList.remove('modal-fire-effect');
             document.querySelectorAll('.emoji').forEach(el => el.classList.remove('selected'));
+            
             e.target.classList.add('selected');
             ratingSelecionado = e.target.dataset.rating;
+
+            if (ratingSelecionado === 'fogo') {
+                modalAdicionarCard.classList.add('modal-fire-effect');
+            }
         }
     });
 
@@ -127,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 id: Date.now(),
                 name: nome,
                 rating: ratingSelecionado,
-                date: new Date().toLocaleDateString('pt-BR') // Adiciona a data atual
+                date: new Date().toLocaleDateString('pt-BR')
             };
             pessoas.push(novaPessoa);
             salvarEstado();
@@ -192,16 +206,26 @@ document.addEventListener('DOMContentLoaded', () => {
         statsRuim.innerText = pessoas.filter(p => p.rating === 'ruim').length;
         statsBom.innerText = pessoas.filter(p => p.rating === 'bom').length;
         statsDenovo.innerText = pessoas.filter(p => p.rating === 'denovo').length;
+        statsFogo.innerText = pessoas.filter(p => p.rating === 'fogo').length;
     };
 
-    botaoStats.addEventListener('click', () => {
+    contadorDisplay.addEventListener('click', () => {
         calcularStats();
         toggleModal(modalStats, true);
     });
 
     botaoFecharStats.addEventListener('click', () => toggleModal(modalStats, false));
+    
+    // --- LÓGICA DO HEADER DINÂMICO ---
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+            header.classList.add('header-shrink');
+        } else {
+            header.classList.remove('header-shrink');
+        }
+    });
 
-    // Fechar modais com a tecla ESC ou clique no overlay
+    // --- LÓGICA GERAL DE MODAIS ---
     const fecharModais = () => {
         toggleModal(modalLimparTudo, false);
         toggleModal(modalAdicionar, false);

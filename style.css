@@ -42,42 +42,53 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Animação do Gradiente para Bordas */
 @keyframes animatedGradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+@keyframes fireGlow {
+    0% { box-shadow: 0 0 10px 2px rgba(255, 50, 50, 0.7); }
+    50% { box-shadow: 0 0 20px 5px rgba(255, 100, 0, 0.8); }
+    100% { box-shadow: 0 0 10px 2px rgba(255, 50, 50, 0.7); }
+}
 
-/* --- CABEÇALHO --- */
+
+/* --- CABEÇALHO DINÂMICO --- */
 header {
-    padding: 15px 10px;
     background: var(--cor-header-gradiente);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.titulo h1 {
-    font-weight: 700;
-    font-size: 2.5em;
+    padding: 20px 10px;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 998;
+    transition: padding 0.4s ease, font-size 0.4s ease;
 }
-.header-actions {
-    flex: 1;
-    display: flex;
+header .titulo h1 {
+    font-weight: 700;
+    font-size: 2.8em;
+    transition: font-size 0.4s ease;
 }
-.header-actions:last-child {
-    justify-content: flex-end;
+header .subtitulo-header {
+    font-size: 1.2em;
+    opacity: 1;
+    max-height: 20px;
+    transition: font-size 0.4s ease, opacity 0.4s ease, max-height 0.4s ease;
 }
-.header-button {
-    background: none;
-    border: none;
+/* Estado encolhido */
+header.header-shrink {
+    padding: 10px;
+}
+header.header-shrink .titulo h1 {
     font-size: 1.8em;
-    cursor: pointer;
-    padding: 5px;
-    color: var(--cor-texto-principal);
 }
+header.header-shrink .subtitulo-header {
+    font-size: 0;
+    opacity: 0;
+    max-height: 0;
+}
+
 
 /* --- CONTEÚDO PRINCIPAL --- */
 main { padding: 10px; }
@@ -116,9 +127,7 @@ main { padding: 10px; }
     gap: 15px;
     animation: fadeIn 0.4s ease forwards;
 }
-.lista-item-emoji {
-    font-size: 1.8em;
-}
+.lista-item-emoji { font-size: 1.8em; }
 .lista-item-nome {
     font-size: 1.6em;
     font-weight: bold;
@@ -164,11 +173,13 @@ main { padding: 10px; }
 #overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2); /* Mais transparente */
+    backdrop-filter: blur(5px); /* Efeito de desfoque */
+    -webkit-backdrop-filter: blur(5px);
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, backdrop-filter 0.3s ease;
 }
 #overlay.visible { opacity: 1; visibility: visible; }
 .modal-container {
@@ -186,23 +197,25 @@ main { padding: 10px; }
 .modal {
     background: var(--cor-modal-fundo);
     box-shadow: 0 8px 32px 0 var(--cor-sombra);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     border-radius: 25px;
     border: 1px solid var(--cor-modal-borda);
     width: 90%;
-    max-width: 350px;
+    max-width: 380px; /* Um pouco maior para o 4º emoji */
     padding: 25px;
     text-align: center;
     transform: scale(0.95);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
+}
+/* Efeito de borda para seleção "fogo" */
+.modal.modal-fire-effect {
+    animation: fireGlow 2s infinite;
 }
 .modal-container.visible .modal { transform: scale(1); }
 .modal-titulo { font-size: 1.4em; font-weight: bold; }
 .modal-subtitulo { font-size: 0.9em; opacity: 0.8; margin-top: 5px; }
 .modal-pergunta { 
     margin-top: 20px;
-    font-size: 1.2em; /* Fonte aumentada */
+    font-size: 1.2em;
     font-weight: bold;
     opacity: 0.9;
 }
@@ -225,7 +238,7 @@ main { padding: 10px; }
     background: transparent;
     color: var(--cor-texto-principal);
     border: 2px solid transparent;
-    border-radius: 50px; /* Mais arredondado */
+    border-radius: 50px;
     font-weight: bold;
     cursor: pointer;
     position: relative;
@@ -238,7 +251,7 @@ main { padding: 10px; }
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: -1;
-    margin: -2px; /* Cobre a área da borda */
+    margin: -2px;
     border-radius: inherit;
     background-size: 300% 300%;
     animation: animatedGradient 4s linear infinite;
@@ -255,7 +268,6 @@ main { padding: 10px; }
 }
 .modal-button:active { transform: scale(0.95); }
 
-
 /* Modal Adicionar: Input e Emojis */
 #inputNome {
     width: 100%;
@@ -270,11 +282,12 @@ main { padding: 10px; }
 .emojis-rating {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 15px; /* Menor para caber 4 emojis */
     margin-top: 15px;
+    flex-wrap: wrap; /* Caso não caiba em telas muito pequenas */
 }
 .emoji {
-    font-size: 2.5em;
+    font-size: 2.2em; /* Um pouco menor para caber 4 */
     cursor: pointer;
     transition: transform 0.2s, filter 0.3s, opacity 0.3s;
     filter: grayscale(80%);
@@ -292,6 +305,8 @@ main { padding: 10px; }
 .stats-rating {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-top: 15px;
     font-size: 1.3em;
 }
@@ -318,7 +333,14 @@ footer {
     border-radius: 50px;
     z-index: 999;
 }
-footer h1 { font-size: 2.5em; }
+footer h1 {
+    font-size: 2.5em;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+footer h1:hover {
+    transform: scale(1.1);
+}
 footer button {
     cursor: pointer;
     background: transparent;

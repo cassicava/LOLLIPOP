@@ -13,15 +13,11 @@
 
 <body>
 
-    <header>
-        <div class="header-actions">
-            <button id="botaoStats" class="header-button" title="Estatísticas">📊</button>
-        </div>
+    <header id="header">
         <div class="titulo">
             <h1><span>L</span>ollipop</h1>
+            <p class="subtitulo-header">Contador de Beijos</p>
         </div>
-        <div class="header-actions">
-            </div>
     </header>
 
     <main>
@@ -61,8 +57,9 @@
             <p class="modal-pergunta">Como foi?</p>
             <div id="containerEmojis" class="emojis-rating">
                 <span class="emoji" data-rating="ruim" title="Ruim">🤮</span>
-                <span class="emoji" data-rating="bom" title="Tanto faz">🥱</span>
+                <span class="emoji" data-rating="bom" title="Bom">😊</span>
                 <span class="emoji" data-rating="denovo" title="Quero de novo!">😍</span>
+                <span class="emoji" data-rating="fogo" title="Algo a mais 🔥">🔥</span>
             </div>
             <div class="botoes-modal">
                 <button id="botaoCancelarAdicao" class="modal-button cancel">CANCELAR</button>
@@ -79,8 +76,9 @@
                 <p>Total de Pessoas: <strong id="statsTotal">0</strong></p>
                 <div class="stats-rating">
                     <span title="Ruim">🤮: <strong id="statsRuim">0</strong></span>
-                    <span title="Tanto faz">🥱: <strong id="statsBom">0</strong></span>
+                    <span title="Bom">😊: <strong id="statsBom">0</strong></span>
                     <span title="Quero de novo!">😍: <strong id="statsDenovo">0</strong></span>
+                    <span title="Algo a mais">🔥: <strong id="statsFogo">0</strong></span>
                 </div>
             </div>
         </div>
@@ -89,7 +87,7 @@
 
     <footer>
         <button id="botaoDecrementar" title="Remover o último adicionado">-</button>
-        <h1 id="contador">0</h1>
+        <h1 id="contador" title="Ver Estatísticas">0</h1>
         <button id="botaoIncrementar" title="Adicionar nova pessoa">+</button>
     </footer>
 

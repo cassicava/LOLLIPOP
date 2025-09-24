@@ -19,9 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Modais e seus conteúdos
     const todosOsModais = document.querySelectorAll('.modal-container');
-    const modalLimparTudo = document.getElementById("modalLimparTudo");
-    const botaoConfirmarLimpeza = document.getElementById("botaoConfirmarLimpeza");
-
     const modalAdicionar = document.getElementById("modalAdicionar");
     const modalAdicionarTitulo = document.getElementById('modalAdicionarTitulo');
     const containerAvaliacao = document.getElementById('containerAvaliacao');
@@ -29,22 +26,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const botaoConfirmarAdicao = document.getElementById("botaoConfirmarAdicao");
     const inputNome = document.getElementById("inputNome");
     const containerEmojis = document.getElementById("containerEmojis");
-
     const modalStats = document.getElementById("modalStats");
     const statsTotal = document.getElementById("statsTotal");
     const statsRatingContainer = document.getElementById('statsRatingContainer');
-
     const modalAchievements = document.getElementById("modalAchievements");
     const listaAchievementsDisplay = document.getElementById("listaAchievements");
-    
     const modalListas = document.getElementById('modalListas');
     const gerenciadorDeListas = document.getElementById('gerenciadorDeListas');
     const botaoAbrirModalCriarLista = document.getElementById('botaoAbrirModalCriarLista');
-
     const modalCriarLista = document.getElementById('modalCriarLista');
     const inputNomeLista = document.getElementById('inputNomeLista');
-    const inputEmojiLista = document.getElementById('inputEmojiLista');
     const botaoSalvarNovaLista = document.getElementById('botaoSalvarNovaLista');
+    const modalAlerta = document.getElementById('modalAlerta');
+    const alertaTitulo = document.getElementById('alertaTitulo');
+    const alertaMensagem = document.getElementById('alertaMensagem');
+    const alertaBotaoOK = document.getElementById('alertaBotaoOK');
+    const modalConfirmacao = document.getElementById('modalConfirmacao');
+    const confirmacaoTitulo = document.getElementById('confirmacaoTitulo');
+    const confirmacaoMensagem = document.getElementById('confirmacaoMensagem');
+    const confirmacaoBotaoSim = document.getElementById('confirmacaoBotaoSim');
+    const confirmacaoBotaoNao = document.getElementById('confirmacaoBotaoNao');
 
     // --- ESTRUTURA DE DADOS PRINCIPAL ---
     let appData = {};
@@ -53,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const inicializarDados = () => {
         const dadosSalvos = JSON.parse(localStorage.getItem('lollipopData'));
         const dadosAntigos = JSON.parse(localStorage.getItem('pessoas'));
-
         if (dadosSalvos) {
             appData = dadosSalvos;
             for (const key in masterAchievements) {
@@ -65,9 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             appData = {
                 currentListId: 'beijos',
                 achievements: JSON.parse(JSON.stringify(masterAchievements)),
-                lists: {
-                    'beijos': { id: 'beijos', title: 'Beijos', emoji: '🍭', entries: dadosAntigos || [], ratingsEnabled: true }
-                }
+                lists: { 'beijos': { id: 'beijos', title: 'Beijos', emoji: '🍭', entries: dadosAntigos || [], ratingsEnabled: true } }
             };
         }
         if (dadosAntigos) {
@@ -77,10 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         saveData();
     };
 
-    const saveData = () => {
-        localStorage.setItem('lollipopData', JSON.stringify(appData));
-    };
-
+    const saveData = () => localStorage.setItem('lollipopData', JSON.stringify(appData));
 
     // --- LÓGICA DE CONQUISTAS ---
     const masterAchievements = {
@@ -94,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const showToast = (id) => {
+        vibrar(100);
         const achievement = masterAchievements[id];
         const toast = document.createElement('div');
         toast.className = 'toast';
@@ -106,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const achievements = appData.achievements;
         const beijos = appData.lists.beijos.entries;
         let achievementUnlocked = false;
-
         const unlock = (id) => {
             if (achievements[id] && !achievements[id].unlocked) {
                 achievements[id].unlocked = true;
@@ -114,50 +109,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 achievementUnlocked = true;
             }
         };
-
         if (beijos.length >= 1) unlock('first_entry');
         if (beijos.length >= 10) unlock('reach_10');
         if (beijos.length >= 25) unlock('reach_25');
-
         const ratingsUsed = new Set(beijos.map(p => p.rating));
         if (ratingsUsed.size === Object.keys(ratingEmojiMap).length) unlock('all_ratings');
-        
         if (beijos.length >= 3 && beijos.slice(-3).every(p => p.rating === 'fogo')) unlock('three_fire');
-        
         if (beijos.length > 0) {
-            const umAnoEmMs = 365 * 24 * 60 * 60 * 1000;
-            const agora = Date.now();
-            if ([...beijos].sort((a,b) => a.id - b.id)[0].id < (agora - umAnoEmMs)) {
-                unlock('time_capsule');
-            }
+            if ([...beijos].sort((a,b) => a.id - b.id)[0].id < (Date.now() - 31536000000)) unlock('time_capsule');
         }
-        
         const hoje = new Date();
         if (hoje.getMonth() === 1 && hoje.getDate() === 14) unlock('cupids_arrow');
-        
         if(achievementUnlocked) saveData();
     };
 
-    // --- FUNÇÕES DE RENDERIZAÇÃO ---
+    // --- FUNÇÕES DE RENDERIZAÇÃO E MODAIS ---
     const renderizar = () => {
         const currentList = appData.lists[appData.currentListId];
-        const entries = currentList.entries;
-        
         tituloPrincipal.innerHTML = '<span>L</span>ollipop';
         subtituloListaAtual.innerText = currentList.title;
-
-        contadorDisplay.innerText = entries.length;
+        contadorDisplay.innerText = currentList.entries.length;
         listaPessoasDisplay.innerHTML = '';
-        if (entries.length === 0) {
+
+        if (currentList.entries.length === 0) {
             estadoVazioDisplay.style.display = 'block';
             listaPessoasDisplay.style.display = 'none';
             return;
         }
         estadoVazioDisplay.style.display = 'none';
         listaPessoasDisplay.style.display = 'block';
-
+        
+        let animationCounter = 0;
         const grupos = {};
-        [...entries].sort((a, b) => b.id - a.id).forEach(entry => {
+        [...currentList.entries].sort((a, b) => b.id - a.id).forEach(entry => {
             const data = new Date(entry.id);
             const chave = `${data.getFullYear()}-${data.getMonth()}`;
             if (!grupos[chave]) grupos[chave] = [];
@@ -169,12 +153,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const nomeMes = new Date(ano, mes).toLocaleString('pt-BR', { month: 'long', year: 'numeric' });
             const headerItem = document.createElement('li');
             headerItem.className = 'lista-group-header';
+            headerItem.style.animationDelay = `${animationCounter * 50}ms`;
+            animationCounter++;
             headerItem.textContent = nomeMes;
             listaPessoasDisplay.appendChild(headerItem);
             
             grupos[chave].forEach(entry => {
                 const item = document.createElement('li');
                 item.className = 'lista-item';
+                item.style.animationDelay = `${animationCounter * 50}ms`;
+                animationCounter++;
                 item.dataset.id = entry.id;
                 const emojiHtml = currentList.ratingsEnabled ? `<span class="lista-item-emoji">${ratingEmojiMap[entry.rating] || ''}</span>` : '';
                 item.innerHTML = `${emojiHtml}<p class="lista-item-nome">${entry.name}</p><p class="lista-item-data">${entry.date}</p><button class="botao-deletar-item" title="Deletar ${entry.name}">🗑️</button>`;
@@ -193,6 +181,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const mostrarAlerta = (mensagem, titulo = "Atenção") => {
+        alertaTitulo.innerText = titulo;
+        alertaMensagem.innerText = mensagem;
+        toggleModal(modalAlerta, true);
+    };
+
+    const mostrarConfirmacao = (mensagem, onConfirm, titulo = "Confirmar Ação") => {
+        confirmacaoTitulo.innerText = titulo;
+        confirmacaoMensagem.innerText = mensagem;
+        toggleModal(modalConfirmacao, true);
+        const simHandler = () => {
+            onConfirm();
+            toggleModal(modalConfirmacao, false);
+            confirmacaoBotaoSim.removeEventListener('click', simHandler);
+            confirmacaoBotaoNao.removeEventListener('click', naoHandler);
+        };
+        const naoHandler = () => {
+            toggleModal(modalConfirmacao, false);
+            confirmacaoBotaoSim.removeEventListener('click', simHandler);
+            confirmacaoBotaoNao.removeEventListener('click', naoHandler);
+        };
+        confirmacaoBotaoSim.addEventListener('click', simHandler);
+        confirmacaoBotaoNao.addEventListener('click', naoHandler);
+    };
+
     const dispararAnimacao = (rating) => {
         const opcoes = { particleCount: 100, spread: 70, origin: { y: 0.6 } };
         if (rating === 'ruim') opcoes.colors = ['#5C4033', '#6A5141', '#856D4D', '#3D2B1F'];
@@ -205,14 +218,29 @@ document.addEventListener('DOMContentLoaded', () => {
         confetti(opcoes);
     };
 
+    const vibrar = (ms = 50) => {
+        if (navigator.vibrate) navigator.vibrate(ms);
+    };
+    
+    const animarEExcluir = (itemElement, callback) => {
+        if (!itemElement) return;
+        itemElement.classList.add('item-excluindo');
+        itemElement.addEventListener('animationend', () => {
+            callback();
+        }, { once: true });
+    };
+
     // --- LÓGICA DE EVENTOS ---
     
     botaoIncrementar.addEventListener('click', () => {
+        vibrar();
         const currentList = appData.lists[appData.currentListId];
         inputNome.value = '';
         ratingSelecionado = null;
         modalAdicionarTitulo.innerText = `Adicionar em ${currentList.title}`;
         containerAvaliacao.style.display = currentList.ratingsEnabled ? 'block' : 'none';
+        if(currentList.id === 'beijos') inputNome.placeholder = 'Quem você beijou?';
+        else inputNome.placeholder = 'Nome do registro...';
         document.querySelectorAll('.emoji').forEach(e => e.classList.remove('selected'));
         modalAdicionarCard.classList.remove('modal-fire-effect');
         toggleModal(modalAdicionar, true);
@@ -221,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     containerEmojis.addEventListener('click', (e) => {
         if (e.target.classList.contains('emoji')) {
+            vibrar(30);
             modalAdicionarCard.classList.remove('modal-fire-effect');
             document.querySelectorAll('.emoji').forEach(el => el.classList.remove('selected'));
             e.target.classList.add('selected');
@@ -232,54 +261,68 @@ document.addEventListener('DOMContentLoaded', () => {
     botaoConfirmarAdicao.addEventListener('click', () => {
         const nome = inputNome.value.trim();
         const currentList = appData.lists[appData.currentListId];
-        if (nome && (!currentList.ratingsEnabled || ratingSelecionado)) {
-            const novoItem = { id: Date.now(), name: nome, rating: currentList.ratingsEnabled ? ratingSelecionado : null, date: new Date().toLocaleDateString('pt-BR') };
-            currentList.entries.push(novoItem);
-            if (currentList.id === 'beijos') checkAchievements();
-            saveData();
-            renderizar();
-            toggleModal(modalAdicionar, false);
-            if(currentList.ratingsEnabled) dispararAnimacao(ratingSelecionado);
-        } else if (!nome) alert('Por favor, digite um nome.');
-        else if (currentList.ratingsEnabled && !ratingSelecionado) alert('Por favor, escolha uma avaliação.');
+        if (!nome) { mostrarAlerta('Por favor, digite um nome.'); return; }
+        if (currentList.ratingsEnabled && !ratingSelecionado) { mostrarAlerta('Por favor, escolha uma avaliação.'); return; }
+        
+        vibrar();
+        const novoItem = { id: Date.now(), name: nome, rating: currentList.ratingsEnabled ? ratingSelecionado : null, date: new Date().toLocaleDateString('pt-BR') };
+        currentList.entries.push(novoItem);
+        if (currentList.id === 'beijos') checkAchievements();
+        saveData();
+        renderizar();
+        toggleModal(modalAdicionar, false);
+        if(currentList.ratingsEnabled) dispararAnimacao(ratingSelecionado);
     });
 
     botaoDecrementar.addEventListener('click', () => {
-        const entries = appData.lists[appData.currentListId].entries;
-        if (entries.length > 0 && confirm(`Tem certeza que deseja remover "${entries[entries.length - 1].name}"?`)) {
-            entries.pop();
-            saveData();
-            renderizar();
+        vibrar();
+        const currentList = appData.lists[appData.currentListId];
+        const entries = currentList.entries;
+        if (entries.length > 0) {
+            mostrarConfirmacao(`Tem certeza que deseja remover "${entries[entries.length - 1].name}"?`, () => {
+                vibrar(70);
+                const ultimoItem = listaPessoasDisplay.querySelector('.lista-item:last-of-type');
+                animarEExcluir(ultimoItem, () => {
+                    entries.pop();
+                    saveData();
+                    renderizar();
+                });
+            });
         }
     });
 
     listaPessoasDisplay.addEventListener('click', (e) => {
         if (e.target.classList.contains('botao-deletar-item')) {
+            vibrar();
             const item = e.target.closest('.lista-item');
             const entryId = Number(item.dataset.id);
             const currentList = appData.lists[appData.currentListId];
             const entry = currentList.entries.find(p => p.id === entryId);
-            if(confirm(`Tem certeza que deseja remover "${entry.name}"?`)){
-                currentList.entries = currentList.entries.filter(p => p.id !== entryId);
-                saveData();
-                renderizar();
-            }
+            mostrarConfirmacao(`Tem certeza que deseja remover "${entry.name}"?`, () => {
+                vibrar(70);
+                animarEExcluir(item, () => {
+                    currentList.entries = currentList.entries.filter(p => p.id !== entryId);
+                    saveData();
+                    renderizar();
+                });
+            });
         }
     });
 
     botaoLimparTudo.addEventListener('click', () => {
-        if (appData.lists[appData.currentListId].entries.length > 0) toggleModal(modalLimparTudo, true);
-        else alert("A lista já está vazia!");
-    });
-    
-    botaoConfirmarLimpeza.addEventListener('click', () => {
-        appData.lists[appData.currentListId].entries = [];
-        saveData();
-        renderizar();
-        toggleModal(modalLimparTudo, false);
+        vibrar();
+        const currentList = appData.lists[appData.currentListId];
+        if (currentList.entries.length > 0) {
+            mostrarConfirmacao(`Tem certeza que deseja apagar todos os ${currentList.entries.length} itens da lista "${currentList.title}"?`, () => {
+                currentList.entries = [];
+                saveData();
+                renderizar();
+            }, "Apagar Tudo?");
+        } else mostrarAlerta("A lista já está vazia!");
     });
 
     contadorDisplay.addEventListener('click', () => {
+        vibrar();
         const currentList = appData.lists[appData.currentListId];
         statsTotal.innerText = currentList.entries.length;
         statsRatingContainer.style.display = currentList.ratingsEnabled ? 'flex' : 'none';
@@ -295,10 +338,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     botaoAchievements.addEventListener('click', () => {
+        vibrar();
         listaAchievementsDisplay.innerHTML = '';
         for (const id in masterAchievements) {
             const achievement = appData.achievements[id];
-            if(!achievement) continue; // Pula conquistas removidas que ainda estão no localStorage
+            if(!achievement) continue;
             const item = document.createElement('li');
             item.className = `achievement-item ${achievement.unlocked ? 'unlocked' : ''}`;
             item.innerHTML = `<span class="achievement-icon">${masterAchievements[id].icon}</span><div class="achievement-details"><h4>${masterAchievements[id].title}</h4><p>${masterAchievements[id].description}</p></div>`;
@@ -308,6 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     botaoVerListas.addEventListener('click', () => {
+        vibrar();
         gerenciadorDeListas.innerHTML = '';
         for (const id in appData.lists) {
             const lista = appData.lists[id];
@@ -315,9 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.className = `list-manager-item ${id === appData.currentListId ? 'active' : ''}`;
             item.dataset.id = id;
             item.innerHTML = `<span class="achievement-icon">${lista.emoji}</span><div class="list-manager-details"><h4>${lista.title}</h4></div>`;
-            if (id !== 'beijos') {
-                item.innerHTML += `<button class="botao-deletar-lista" title="Deletar lista">🗑️</button>`;
-            }
+            if (id !== 'beijos') item.innerHTML += `<button class="botao-deletar-lista" title="Deletar lista">🗑️</button>`;
             gerenciadorDeListas.appendChild(item);
         }
         toggleModal(modalListas, true);
@@ -326,20 +369,20 @@ document.addEventListener('DOMContentLoaded', () => {
     gerenciadorDeListas.addEventListener('click', (e) => {
         const target = e.target;
         if (target.classList.contains('botao-deletar-lista')) {
+            vibrar();
             e.stopPropagation();
             const listId = target.closest('.list-manager-item').dataset.id;
-            if (confirm(`Tem certeza que deseja apagar a lista "${appData.lists[listId].title}"? Isso não pode ser desfeito.`)) {
+            mostrarConfirmacao(`Tem certeza que deseja apagar a lista "${appData.lists[listId].title}"?`, () => {
+                vibrar(70);
                 delete appData.lists[listId];
-                if (appData.currentListId === listId) {
-                    appData.currentListId = 'beijos';
-                }
+                if (appData.currentListId === listId) appData.currentListId = 'beijos';
                 saveData();
                 renderizar();
-                target.closest('.list-manager-item').remove();
-            }
+                botaoVerListas.click();
+            }, "Apagar Lista?");
         } else if (target.closest('.list-manager-item')) {
-            const listId = target.closest('.list-manager-item').dataset.id;
-            appData.currentListId = listId;
+            vibrar();
+            appData.currentListId = target.closest('.list-manager-item').dataset.id;
             saveData();
             renderizar();
             toggleModal(modalListas, false);
@@ -347,22 +390,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     botaoAbrirModalCriarLista.addEventListener('click', () => {
+        vibrar();
         inputNomeLista.value = '';
-        inputEmojiLista.value = '';
         toggleModal(modalListas, false);
         toggleModal(modalCriarLista, true);
     });
 
     botaoSalvarNovaLista.addEventListener('click', () => {
         const nome = inputNomeLista.value.trim();
-        const emoji = inputEmojiLista.value.trim();
-        if (nome && emoji) {
+        if (nome) {
+            vibrar();
             const novoId = `lista_${Date.now()}`;
-            appData.lists[novoId] = { id: novoId, title: nome, emoji: emoji, entries: [], ratingsEnabled: false };
+            appData.lists[novoId] = { id: novoId, title: nome, emoji: '⭐', entries: [], ratingsEnabled: true };
             saveData();
             toggleModal(modalCriarLista, false);
             botaoVerListas.click();
-        } else alert('Por favor, preencha o nome e o emoji.');
+        } else mostrarAlerta('Por favor, preencha o nome da lista.');
     });
 
     window.addEventListener('scroll', () => {
@@ -377,6 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    alertaBotaoOK.addEventListener('click', () => toggleModal(modalAlerta, false));
     overlay.addEventListener('click', () => todosOsModais.forEach(m => toggleModal(m, false)));
     window.addEventListener('keydown', (e) => { if (e.key === 'Escape') todosOsModais.forEach(m => toggleModal(m, false)); });
 

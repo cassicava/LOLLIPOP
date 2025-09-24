@@ -7,9 +7,9 @@
     --cor-texto-principal: #fafafa;
     --cor-texto-secundario: #e0e0e0;
     --cor-header-gradiente: linear-gradient(135deg, #392d69 0%, #b57bee 100%);
-    --cor-footer-fundo: rgba(27, 28, 30, 0.8);
+    --cor-footer-fundo: rgba(27, 28, 30, 0.85);
     --cor-footer-borda: rgba(255, 255, 255, 0.1);
-    --cor-modal-fundo: rgba(30, 30, 30, 0.75);
+    --cor-modal-fundo: rgba(30, 30, 30, 0.8);
     --cor-modal-borda: rgba(255, 255, 255, 0.18);
     --cor-sombra: rgba(0, 0, 0, 0.37);
     --cor-botao-principal: #b57bee;
@@ -84,6 +84,13 @@ body {
 
     to {
         transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    to {
+        transform: translateX(-120%);
+        opacity: 0;
     }
 }
 
@@ -186,6 +193,8 @@ main {
     opacity: 0.7;
     padding: 25px 0 10px 5px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.4s ease forwards;
+    opacity: 0;
 }
 
 .lista-item {
@@ -199,6 +208,11 @@ main {
     align-items: center;
     gap: 15px;
     animation: fadeIn 0.4s ease forwards;
+    opacity: 0;
+}
+
+.lista-item.item-excluindo {
+    animation: slideOut 0.5s ease forwards;
 }
 
 .lista-item-emoji {
@@ -316,7 +330,7 @@ main {
 .modal-subtitulo {
     font-size: 0.9em;
     opacity: 0.8;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .modal-pergunta {
@@ -388,8 +402,7 @@ main {
 }
 
 #inputNome,
-#inputNomeLista,
-#inputEmojiLista {
+#inputNomeLista {
     width: 100%;
     padding: 12px;
     margin-top: 20px;
@@ -398,12 +411,6 @@ main {
     background-color: var(--cor-input-fundo);
     color: var(--cor-texto-principal);
     font-size: 1em;
-}
-
-#inputEmojiLista {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 1.5em;
 }
 
 .emojis-rating {
@@ -589,7 +596,6 @@ footer {
     width: 65%;
     max-width: 250px;
     height: 70px;
-    /* Menor */
     padding: 0 15px;
     display: flex;
     align-items: center;
@@ -621,7 +627,6 @@ footer button {
     width: 50px;
     height: 50px;
     font-size: 1.8em;
-    /* Menor */
     border-radius: 100%;
     font-weight: normal;
     display: grid;

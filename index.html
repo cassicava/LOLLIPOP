@@ -16,14 +16,12 @@
     <div id="toastContainer"></div>
 
     <header id="header">
-        <div class="header-actions">
-            </div>
+        <div class="header-actions"></div>
         <div class="titulo" id="tituloHeader">
             <h1 id="tituloPrincipal"><span>L</span>ollipop</h1>
             <p id="subtituloListaAtual" class="subtitulo-header">Contador de Beijos</p>
         </div>
-        <div class="header-actions">
-             </div>
+        <div class="header-actions"></div>
     </header>
 
     <main>
@@ -35,32 +33,19 @@
                 <p>Sua lista está vazia!</p>
                 <span>Adicione o primeiro item no botão '+' abaixo.</span>
             </div>
-            <ul id="listaPessoas" class="lista">
-                </ul>
+            <ul id="listaPessoas" class="lista"></ul>
         </div>
     </main>
 
     <div id="overlay"></div>
-
     <div class="imagem">
         <img id="botaoLimparTudo" src="./img/lixo.png" alt="Limpar toda a lista">
-    </div>
-
-    <div class="modal-container" id="modalLimparTudo">
-        <div class="modal">
-            <p class="modal-titulo">Quer mesmo apagar tudo?</p>
-            <p class="modal-subtitulo">Essa ação não pode ser desfeita!</p>
-            <div class="botoes-modal">
-                <button class="modal-button cancel">NÃO</button>
-                <button class="modal-button danger" id="botaoConfirmarLimpeza">SIM, APAGAR TUDO</button>
-            </div>
-        </div>
     </div>
 
     <div class="modal-container" id="modalAdicionar">
         <div class="modal">
             <p class="modal-titulo" id="modalAdicionarTitulo">Quem você beijou?</p>
-            <input type="text" id="inputNome" placeholder="Digite aqui..." maxlength="30">
+            <input type="text" id="inputNome" placeholder="Quem você beijou?" maxlength="30">
             <div id="containerAvaliacao">
                 <p class="modal-pergunta">Como foi?</p>
                 <div id="containerEmojis" class="emojis-rating">
@@ -78,49 +63,54 @@
     </div>
 
     <div class="modal-container" id="modalStats">
-        <div class="modal">
-            <button class="modal-fechar-button">&times;</button>
+        <div class="modal"><button class="modal-fechar-button">&times;</button>
             <p class="modal-titulo">Estatísticas</p>
             <div class="stats-content">
                 <p>Total de Itens: <strong id="statsTotal">0</strong></p>
-                <div id="statsRatingContainer" class="stats-rating">
-                    <span title="Ruim">🤮: <strong id="statsRuim">0</strong></span>
-                    <span title="Bom">😊: <strong id="statsBom">0</strong></span>
-                    <span title="Quero de novo!">😍: <strong id="statsDenovo">0</strong></span>
-                    <span title="Algo a mais">🔥: <strong id="statsFogo">0</strong></span>
-                </div>
+                <div id="statsRatingContainer" class="stats-rating"><span title="Ruim">🤮: <strong
+                            id="statsRuim">0</strong></span><span title="Bom">😊: <strong
+                            id="statsBom">0</strong></span><span title="Quero de novo!">😍: <strong
+                            id="statsDenovo">0</strong></span><span title="Algo a mais">🔥: <strong
+                            id="statsFogo">0</strong></span></div>
             </div>
         </div>
     </div>
-    
     <div class="modal-container" id="modalAchievements">
-        <div class="modal">
-            <button class="modal-fechar-button">&times;</button>
+        <div class="modal"><button class="modal-fechar-button">&times;</button>
             <p class="modal-titulo">🏆 Conquistas</p>
             <ul id="listaAchievements" class="achievements-list"></ul>
         </div>
     </div>
-
     <div class="modal-container" id="modalListas">
-        <div class="modal">
-            <button class="modal-fechar-button">&times;</button>
+        <div class="modal"><button class="modal-fechar-button">&times;</button>
             <p class="modal-titulo">Minhas Listas</p>
             <ul id="gerenciadorDeListas" class="achievements-list"></ul>
-            <div class="botoes-modal">
-                <button class="modal-button success" id="botaoAbrirModalCriarLista">CRIAR NOVA LISTA</button>
-            </div>
+            <div class="botoes-modal"><button class="modal-button success" id="botaoAbrirModalCriarLista">CRIAR NOVA
+                    LISTA</button></div>
+        </div>
+    </div>
+    <div class="modal-container" id="modalCriarLista">
+        <div class="modal">
+            <p class="modal-titulo">Nova Lista</p><input type="text" id="inputNomeLista" placeholder="Nome da lista..."
+                maxlength="20">
+            <div class="botoes-modal"><button class="modal-button cancel">CANCELAR</button><button
+                    class="modal-button success" id="botaoSalvarNovaLista">SALVAR</button></div>
         </div>
     </div>
 
-    <div class="modal-container" id="modalCriarLista">
+    <div class="modal-container" id="modalAlerta">
         <div class="modal">
-             <p class="modal-titulo">Nova Lista</p>
-             <input type="text" id="inputNomeLista" placeholder="Nome da lista..." maxlength="20">
-             <input type="text" id="inputEmojiLista" placeholder="Cole um emoji aqui..." maxlength="2">
-             <div class="botoes-modal">
-                <button class="modal-button cancel">CANCELAR</button>
-                <button class="modal-button success" id="botaoSalvarNovaLista">SALVAR</button>
-            </div>
+            <p class="modal-titulo" id="alertaTitulo">Atenção</p>
+            <p class="modal-subtitulo" id="alertaMensagem">Mensagem de alerta.</p>
+            <div class="botoes-modal"><button class="modal-button success" id="alertaBotaoOK">OK</button></div>
+        </div>
+    </div>
+    <div class="modal-container" id="modalConfirmacao">
+        <div class="modal">
+            <p class="modal-titulo" id="confirmacaoTitulo">Confirmar Ação</p>
+            <p class="modal-subtitulo" id="confirmacaoMensagem">Você tem certeza?</p>
+            <div class="botoes-modal"><button class="modal-button cancel" id="confirmacaoBotaoNao">NÃO</button><button
+                    class="modal-button danger" id="confirmacaoBotaoSim">SIM</button></div>
         </div>
     </div>
 

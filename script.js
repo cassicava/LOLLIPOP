@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (dadosSalvos) {
             appData = dadosSalvos;
-            // Garante que novas conquistas sejam adicionadas ao estado salvo
             for (const key in masterAchievements) {
                 if (!appData.achievements.hasOwnProperty(key)) {
                     appData.achievements[key] = masterAchievements[key];
@@ -90,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
         reach_25: { title: 'Ícone Local', description: 'Atingiu 25 pessoas na lista!', icon: '🌟', unlocked: false },
         all_ratings: { title: 'Crítico Experiente', description: 'Usou todas as avaliações.', icon: '🧐', unlocked: false },
         three_fire: { title: 'Pegando Fogo!', description: 'Registrou 3x seguidas com 🔥.', icon: '🥵', unlocked: false },
-        organizer: { title: 'Organizador(a)', description: 'Criou sua primeira lista personalizada.', icon: '🗂️', unlocked: false },
         time_capsule: { title: 'Cápsula do Tempo', description: 'Possui um registro de mais de um ano.', icon: '⏳', unlocked: false },
         cupids_arrow: { title: 'Flecha do Cupido', description: 'Adicionou alguém no Dia dos Namorados.', icon: '💘', unlocked: false },
     };
@@ -110,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let achievementUnlocked = false;
 
         const unlock = (id) => {
-            if (!achievements[id].unlocked) {
+            if (achievements[id] && !achievements[id].unlocked) {
                 achievements[id].unlocked = true;
                 showToast(id);
                 achievementUnlocked = true;
@@ -300,9 +298,10 @@ document.addEventListener('DOMContentLoaded', () => {
         listaAchievementsDisplay.innerHTML = '';
         for (const id in masterAchievements) {
             const achievement = appData.achievements[id];
+            if(!achievement) continue; // Pula conquistas removidas que ainda estão no localStorage
             const item = document.createElement('li');
             item.className = `achievement-item ${achievement.unlocked ? 'unlocked' : ''}`;
-            item.innerHTML = `<span class="achievement-icon">${masterAchievements[id].icon}</span><div class="achievement-details"><h4>${achievement.title}</h4><p>${masterAchievements[id].description}</p></div>`;
+            item.innerHTML = `<span class="achievement-icon">${masterAchievements[id].icon}</span><div class="achievement-details"><h4>${masterAchievements[id].title}</h4><p>${masterAchievements[id].description}</p></div>`;
             listaAchievementsDisplay.appendChild(item);
         }
         toggleModal(modalAchievements, true);
@@ -360,10 +359,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nome && emoji) {
             const novoId = `lista_${Date.now()}`;
             appData.lists[novoId] = { id: novoId, title: nome, emoji: emoji, entries: [], ratingsEnabled: false };
-            if (!appData.achievements.organizer.unlocked) {
-                appData.achievements.organizer.unlocked = true;
-                showToast('organizer');
-            }
             saveData();
             toggleModal(modalCriarLista, false);
             botaoVerListas.click();

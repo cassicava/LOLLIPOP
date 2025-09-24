@@ -8,10 +8,8 @@
     --cor-texto-secundario: #e0e0e0;
     --cor-header-gradiente: linear-gradient(135deg, #392d69 0%, #b57bee 100%);
     --cor-footer-fundo: rgba(27, 28, 30, 0.8);
-    /* Mais opaco */
     --cor-footer-borda: rgba(255, 255, 255, 0.1);
     --cor-modal-fundo: rgba(30, 30, 30, 0.75);
-    /* Mais opaco */
     --cor-modal-borda: rgba(255, 255, 255, 0.18);
     --cor-sombra: rgba(0, 0, 0, 0.37);
     --cor-botao-principal: #b57bee;
@@ -310,22 +308,6 @@ main {
     transform: scale(1);
 }
 
-.modal-container.fullscreen {
-    align-items: stretch;
-}
-
-/* Estica o conteúdo */
-.modal-container.fullscreen .modal {
-    width: 100%;
-    height: 100vh;
-    max-height: 100vh;
-    border-radius: 0;
-    /* Remove bordas arredondadas */
-    animation: fadeIn 0.4s forwards;
-    display: flex;
-    flex-direction: column;
-}
-
 .modal-titulo {
     font-size: 1.4em;
     font-weight: bold;
@@ -475,12 +457,11 @@ main {
     list-style: none;
     margin-top: 20px;
     text-align: left;
+    max-height: 40vh;
     overflow-y: auto;
     padding-right: 10px;
-    flex-grow: 1;
 }
 
-/* flex-grow para ocupar espaço no modal fullscreen */
 .achievement-item,
 .list-manager-item {
     display: flex;
@@ -605,10 +586,11 @@ footer {
     bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 70%;
-    max-width: 280px;
-    height: 80px;
-    padding: 0 20px;
+    width: 65%;
+    max-width: 250px;
+    height: 70px;
+    /* Menor */
+    padding: 0 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -622,7 +604,7 @@ footer {
 }
 
 footer h1 {
-    font-size: 2.5em;
+    font-size: 2.2em;
     cursor: pointer;
     transition: transform 0.2s ease;
 }
@@ -636,9 +618,10 @@ footer button {
     background: transparent;
     color: var(--cor-texto-principal);
     border: 2px solid var(--cor-botao-principal);
-    width: 55px;
-    height: 55px;
-    font-size: 2em;
+    width: 50px;
+    height: 50px;
+    font-size: 1.8em;
+    /* Menor */
     border-radius: 100%;
     font-weight: normal;
     display: grid;
@@ -658,7 +641,7 @@ footer button:active {
 
 .floating-action-buttons {
     position: fixed;
-    bottom: 22px;
+    bottom: 18px;
     left: 0;
     right: 0;
     height: 65px;
